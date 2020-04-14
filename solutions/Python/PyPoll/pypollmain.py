@@ -71,6 +71,17 @@ with open(csvpath) as csvfile:
         if thing[1] == maximumpercent:
             print(F"Winner: {thing[0]} ")
 
+#specify the file to write to
+output_path= r"PyPoll\output.csv"
+
+#write file
+with open(output_path, "w") as datafile:
+    csvwriter = csv.writer(datafile)
+
+    
+
+
+
     
     
 

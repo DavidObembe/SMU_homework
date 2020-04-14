@@ -59,7 +59,17 @@ with open(csvpath) as csvfile:
         elif thing[1] == minchange:
             print (f"greatest decrease in profit: {thing[0]} (${thing[1]})")
     
-    #print (maxchange)
+ 
+#specify the file to write to
+output_path= r"Pybank\output.csv"
+
+#write file
+with open(output_path, "w") as csvfile:
+    csvwriter = csv.writer(csvfile, dialect='excel')
+
+    csvwriter.writerows(data)
+
+
 
     
           
@@ -69,5 +79,4 @@ with open(csvpath) as csvfile:
 
 
         
-       # numb_row =len(csvreader)
-        #print(numb_row)   
+       
