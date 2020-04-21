@@ -87,11 +87,7 @@ with open(output_path, "w") as datafile:
 
     
     
-    #print(f"li had :{subtotal1} votes")
-    #print (f"Khan had :{subtotal2} votes")
-    #print (f"Correy had :{subtotal3} votes")
-    #print (f"O'Tooley had :{subtotal4} votes")
-
+   
 
 
 
