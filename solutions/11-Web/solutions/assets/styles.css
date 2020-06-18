@@ -1,0 +1,75 @@
+.flex-container {
+    display: flex;
+    background-color: chartreuse;
+}
+
+.graph_sizes {
+    width: 100%;
+    height: 100px;
+}
+
+.cursor_change {
+    cursor: pointer;
+}
+
+
+/* second sizing for graphs in the comparison html page */
+
+.graph_sizes2 {
+    width: 100%;
+    height: 300px;
+}
+
+.Text_align {
+    text-align: center;
+}
+
+.border_control {
+    border-style: solid !important;
+    border: saddlebrown;
+    border-width: 1px;
+    border-radius: 10px;
+}
+
+.center_img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.landing_img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+@media(max-width: 1000px) {
+    .graph_sizes {
+        width: 100%;
+    }
+    .graph_sizes2 {
+        width: 60%;
+        height: 100px;
+    }
+}
+
+
+/* @media screen and (max-width: 1500px) {
+    .graph_sizes2 {
+        width: 300px;
+        height: 300px;
+    }
+    .graph_sizes {
+        width: 300px;
+        height: 300px;
+    }
+} */
+
+
+/*.column {
+    flex: 33.33%;
+    padding: 5px;
+}
+*/
