@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrape Mars</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/slate/bootstrap.min.css" integrity="sha384-idNH3UIOiZbCf8jxqu4iExnH34y5UovfW/Mg8T5WfNvoJolDvknoNqR69V2OexgF" crossorigin="anonymous">
+
+    <!-- <link rel="stylesheet" type="text/css" href="index.css"> -->
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="jumbotron text-center">
+            <h1>Mission to Mars</h1>
+            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+        </div>
+
+
+        <div class="jumbotron text-center">
+            <!-- this is the news title -->
+            <div class="row" id="title1">
+                <h2 style="margin: auto;">Mission to Mars Latest news</h2>
+            </div>
+            <div class="row" id="news_title">
+                <p>
+                    <h6>{{mars.news_title}}</h6>
+                </p>
+
+
+            </div>
+
+            <p></p>
+            <!-- this is news website -->
+            <div class="row" id="news Website">
+                <h2 style="margin: auto;">news website</h2>
+            </div>
+            <div class="row">
+                <p>
+                    <h6> {{mars.news_website}}</h6>
+                </p>
+            </div>
+
+            <p></p>
+
+            <!-- this is featured image section -->
+            <div class="row" id="Mars featured Image">
+
+                <h2 style="margin: auto;">Featured Mars Image</h2>
+                <img src="{{mars.Mars_Featured_image }}" alt="daily_image" width="100%">
+            </div>
+
+            <p></p>
+
+            <!-- this is the twitter section -->
+            <div class="row" id="latest tweet">
+                <h2 style="margin: auto;">Latest Mars tweet</h2>
+                <p>
+                    <h6>{{mars.latest_Mars_tweet}}</h6>
+                </p>
+
+            </div>
+
+            <p></p>
+            <!-- This is the html table -->
+            <div class="row" id="data_html">
+                <h2 style="margin: auto;">Mars Statistics table</h2>
+                {{mars.data_html | safe }}
+            </div>
+
+            <p></p>
+            <!-- mars hemisphere -->
+            <div class="row" id="mars-hemispheres">
+                <h2 style="margin: auto;">Mars Hemispheres</h2>
+            </div>
+
+            <div class="row" style="margin-top:80px;">
+                {% for hemisphere in mars.Hemisphere_image_urls %}
+                <div class="col-md-6">
+                    <div class="img-thumbnail">
+
+                        <!-- if images is False/None/non-existent, then default to error message -->
+                        <img src="{{hemisphere.img_url|default('static/images/error.png', true)}}" alt="Hemisphere of mars" width="50% ">
+                        <div>
+                            <h3>{{hemisphere.title}}</h3>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- last active -->
+            <p></p>
+            <div class="row " id="active ">
+                <h4>{{mars.active}}</h4>
+            </div>
+
+            <p></p>
+
+            <!-- date scraped -->
+            <div class="row">
+                <h2 style="margin: auto;">Date Scraped</h2>
+            </div>
+            <div class="row " id="date_scraped ">
+                <h4>{{mars.date_scraped}}</h4>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+    </div>
+</body>
+
+</html>

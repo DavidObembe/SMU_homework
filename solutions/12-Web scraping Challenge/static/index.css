@@ -1,0 +1,11 @@
+.alignment {
+    text-align: center;
+}
+
+.margin {
+    margin: auto;
+}
+
+.button {
+    width: inherit;
+}
