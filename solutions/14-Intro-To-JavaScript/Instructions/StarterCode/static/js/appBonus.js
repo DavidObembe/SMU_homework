@@ -144,3 +144,7 @@ function runEnter() {
 
 
 }
+
+$(document).ready(function() {
+    $('#ufo-table').DataTable();
+});
