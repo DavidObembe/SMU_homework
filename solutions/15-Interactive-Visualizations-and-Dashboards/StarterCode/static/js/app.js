@@ -1,8 +1,5 @@
 d3.json("samples.json").then(function(data) {
 
-
-
-
     //check to see if data is loaded   
     console.log(data);
 
@@ -30,7 +27,36 @@ d3.json("samples.json").then(function(data) {
         };
 
         Plotly.newPlot("bar", plotting_data, layout);
+
+        ////Bubble Chart Initialisation
+        var trace2 = [{
+            x: sampleData[0].otu_ids,
+            y: sampleData[0].sample_values,
+            mode: 'markers',
+            text: sampleData[0].otu_ids,
+            marker: {
+                color: sampleData[0].otu_ids,
+                colorscale: "Bluered",
+                size: sampleData[0].sample_values
+            }
+
+        }];
+
+
+
+        var layout2 = {
+            title: 'Bubble Chart of Otu_ids vs sample_values',
+            showlegend: false,
+            height: 600,
+            width: 900
+        };
+
+        Plotly.newPlot('bubble', trace2, layout2);
+
+
     }
+
+
 
     //create dropdown
     var select = document.getElementById("selDataset");
@@ -42,8 +68,12 @@ d3.json("samples.json").then(function(data) {
         select.insertBefore(option, select.lastChild);
     }
 
+
+
     //call updated plot
     d3.selectAll("#selDataset").on("change", updatePlotly);
+
+
 
     //function to filter based on dropdown menu
     function updatePlotly() {
@@ -52,20 +82,27 @@ d3.json("samples.json").then(function(data) {
         // Assign the value of the dropdown menu option to a variable
         var selectedOption = dropdownMenu.property("value");
 
+        console.log(dropdownMenu);
+        console.log(selectedOption);
+
 
         //filtered function
         function isdropdown(val) {
-            return val.id === selectedOption
+            return val.id == selectedOption
                 //return sampleData[0].otu_ids === val;
         }
 
-
+        console.log(isdropdown(selectedOption));
         //filtered my otu_ids based on the dropdown and called it the variable "filter"
-        var filtered = sampleData.filter((val) => isdropdown(val));
+        // var filtered = sampleData.filter((val) => selectedOption.id);
+        var filtered = sampleData.filter(isdropdown);
 
-        //collected the itu_ids and the sample values from the "filter" and put them in an array
+        console.log(filtered);
+
+        //collected the otu_ids and the sample values from the "filter" and put them in an array
         var graphDataY = filtered.map(item => item.otu_ids);
         var graphDataX = filtered.map(item => item.sample_values);
+        var graphData_label = filtered.map(item => item.otu_labels);
 
         //check to see if I am correct 
         console.log(graphDataY);
@@ -73,9 +110,8 @@ d3.json("samples.json").then(function(data) {
 
         //I zip graphDataY and graphDataX
         var zippedData = graphDataX.map(function(e, i) {
-            return [e, graphDataY[i]];
+            return [e, graphDataY[i], graphData_label[i]];
         });
-
 
         //sort zip
         //array [0] is the sample_values and i am sorting in descending order of sample values
@@ -87,47 +123,55 @@ d3.json("samples.json").then(function(data) {
         var x = sorted_zip.map(x => x[0].slice(0, 10));
 
         var y = sorted_zip[0][1].map(x => "OTU " + x).slice(0, 10);
+
+        var hovername = sorted_zip.map(x => x[2].slice(0, 10));
         //var y = sorted_zip[1].slice(0, 9);
-        console.log(x);
+        console.log(x[0]);
         console.log(y);
+        console.log(hovername);
+
+        var trace1 = [{
+            x: x[0],
+            y: y,
+            orientation: 'h',
+            type: 'bar',
+            text: hovername[0]
 
 
+        }];
 
-        //replot the bar graph
-        // Plotly.restyle("bar", "x", [x]);
-        // Plotly.restyle("bar", "y", [y]);
+        var layout = {
+            title: 'OTU Ids to Values'
+        };
 
-        // function adjustValue1() {
-        //     Plotly.restyle('bar', 'x', [
-        //         [x]
-        //     ]);
-        //     Plotly.restyle('bar', 'y', [
-        //         [y]
-        //     ]);
-        // }
+        Plotly.newPlot('bar', trace1, layout);
 
-        // adjustValue1()
+        ////demographic info
 
-        ///////////////////////////////////////////////////////////////////////////
-        function adjustValue1() {
-            var traces = [{
-                type: 'bar',
-                x: x,
-                y: y,
-                orientation: 'h'
-            }];
+        // Use D3 to select the dropdown menu
 
-            var layout = {
-                hovermode: 'closest',
-                title: 'OTU Ids to Values'
-            };
+        //Let me see if I can use Jquery to insert text
+        var metaDataFilter = metaData.filter(isdropdown);
 
-            Plotly.newPlot('bar', traces, layout);
-        }
-        adjustValue1();
+        console.log(metaDataFilter);
+
+        $('#sample-metadata').empty(); //clear the meta data table thing
+
+        Object.entries(metaDataFilter).forEach(function([key, value]) {
+            let info = `<p><b>${key.toUpperCase()}</b> : ${value} </p>`;
+            $('#sample-metadata').append(info);
+        });
+
+
     }
 
+
     init();
+
+
+
+
+
 
 
 
