@@ -53,6 +53,30 @@ d3.json("samples.json").then(function(data) {
 
         Plotly.newPlot('bubble', trace2, layout2);
 
+        ////Guage chart Initialisation
+        var data = [{
+            domain: { x: [0, 1], y: [0, 1] },
+            value: 0,
+            title: { text: "Belly Button Washing Frequency Scrubs per week" },
+            type: "indicator",
+            mode: "gauge+number",
+            // delta: { reference: 380 },
+            gauge: {
+                axis: { range: [null, 10] },
+                steps: [
+                    { range: [0, 250], color: "lightgray" },
+                    { range: [250, 400], color: "gray" }
+                ],
+                threshold: {
+                    line: { color: "red", width: 4 },
+                    thickness: 0.75,
+                    value: 490
+                }
+            }
+        }];
+
+        var layout = { width: 600, height: 450, margin: { t: 0, b: 0 } };
+        Plotly.newPlot('gauge', data, layout);
 
     }
 
@@ -146,7 +170,7 @@ d3.json("samples.json").then(function(data) {
 
         Plotly.newPlot('bar', trace1, layout);
 
-        ////demographic info
+        ////demographic info section
 
         // Use D3 to select the dropdown menu
 
@@ -157,11 +181,51 @@ d3.json("samples.json").then(function(data) {
 
         $('#sample-metadata').empty(); //clear the meta data table thing
 
-        Object.entries(metaDataFilter).forEach(function([key, value]) {
+        // Object.entries(metaDataFilter).forEach(function([key, value]) {
+        //     let info = `<p><b>${key.toUpperCase()}</b> : ${value} </p>`;
+        //     $('#sample-metadata').append(info);
+        // });
+
+
+        Object.entries(metaDataFilter[0]).forEach(function([key, value]) {
             let info = `<p><b>${key.toUpperCase()}</b> : ${value} </p>`;
             $('#sample-metadata').append(info);
+            console.log(info);
         });
 
+
+        //final section:  Guage Chart
+        function guageme(washNo) {
+            var data = [{
+                domain: { x: [0, 1], y: [0, 1] },
+                value: washNo,
+                title: { text: "Belly Button Washing Frequency Scrubs per week" },
+                type: "indicator",
+                mode: "gauge+number",
+
+                gauge: {
+                    axis: { range: [null, 10] },
+                    steps: [
+                        { range: [0, 250], color: "lightgray" },
+                        { range: [250, 400], color: "gray" }
+                    ],
+                    threshold: {
+                        line: { color: "red", width: 4 },
+                        thickness: 0.75,
+                        value: 490
+                    }
+                }
+            }];
+
+            var layout = { width: 600, height: 450, margin: { t: 0, b: 0 } };
+            Plotly.newPlot('gauge', data, layout);
+
+        }
+
+        var washingNo = metaDataFilter[0].wfreq
+
+        guageme(washingNo)
+        console.log(metaDataFilter[0].wfreq)
 
     }
 
