@@ -19,35 +19,59 @@ function createFeatures(earthquakeData) {
     }
 
     // create a function that gets circle colors
-    function getCircleColor(mag) {
+    function getCircleColor(points) {
         let color = "";
-        if (mag < 5) {
-            color = "yellow";
-        } else if (mag < 6.5) {
-            color = "orange";
-        } else if (mag < 10.0) {
-            color = "red";
+        if (points > 4) {
+            color = "yellow"
+        } else if (points > 5.5) {
+            color = "orange"
+        } else if (points > 7.0) {
+            color = "red"
         }
-        return color;
-    }
+
+    };
 
     function getMarkerSize(points) {
-        return points ** 1.8;
+        return points;
     }
 
+    var marker_rad = earthquakeData.map((x) => x.properties.mag);
+    // var latlng = earthquakeData.map((x) => x.geometry.coordinates);
+
+
+    var geojsonMarkerOptions = {
+        radius: 8,
+        fillColor: "#ff7800",
+        color: "#000",
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 0.8
+    };
 
     // Create a GeoJSON layer containing the features array on the earthquakeData object
     // Run the onEachFeature function once for each piece of data in the array
     var earthquakes = L.geoJSON(earthquakeData, {
+        onEachFeature: onEachFeature,
         pointToLayer: function(feature, latlng) {
-            return L.circleMarker(latlng, { radius: getMarkerSize(feature.properties.mag), fillColor: getCircleColor(feature.properties.mag), color: 'white', fillOpacity: 0.7 });
-        },
-        onEachFeature: onEachFeature
-            // style: style
+            return L.circleMarker(latlng, geojsonMarkerOptions);
+        }
     });
 
-    console.log(earthquakeData);
+    // var earthquakes = earthquakeData.forEach(function(quake) {
+    //     L.circle(quake.geometry.coordinates, {
+    //         fillOpacity: 0.8,
+    //         color: "white",
+    //         fillColor: getCircleColor(quake.properties.mag),
+    //         radius: getMarkerSize(quake.properties.mag)
 
+
+
+    //     })
+    // })
+    console.log(earthquakeData);
+    console.log(marker_rad);
+    console.log(latlng);
+    // Sending our earthquakes layer to the createMap function
     createMap(earthquakes);
 }
 

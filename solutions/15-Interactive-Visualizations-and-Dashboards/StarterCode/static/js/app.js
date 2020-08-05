@@ -137,8 +137,9 @@ d3.json("samples.json").then(function(data) {
             return [e, graphDataY[i], graphData_label[i]];
         });
 
-        //sort zip
-        //array [0] is the sample_values and i am sorting in descending order of sample values
+        console.log(zippedData)
+            //sort zip
+            //array [0] is the sample_values and i am sorting in descending order of sample values
         var sorted_zip = zippedData.sort((a, b) => (b[0] - a[0]));
         //check
         console.log(sorted_zip);
