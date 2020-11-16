@@ -1,0 +1,176 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Import Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- Import Bootswatch CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/cyborg/bootstrap.min.css" integrity="sha384-Uga2yStKRHUWCS7ORqIZhJ9LIAv4i7gZuEdoR1QAmw6H+ffhcf7yCOd0CvSoNwoz" crossorigin="anonymous">
+    <!-- Import Bootstap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="home.css" rel="stylesheet">
+</head>
+
+<body>
+
+
+
+    <header>
+        <div class="collapse bg-dark" id="navbarHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-md-7 py-4">
+                        <a href="./home.html">
+                            <h4 class="text-white">Home</h4>
+                        </a>
+                        <!-- <a href="./about.html">
+                            <h4 class="text-white">About</h4>
+                        </a> -->
+                        <a href="./portfolio.html">
+                            <h4 class="text-white">Portfolio</h4>
+                        </a>
+                        <a href="https://storage.googleapis.com/davidobembe/data_analyst_short.pdf">
+                            <h4 class="text-white">Resume</h4>
+                        </a>
+
+                    </div>
+                    <div class="col-sm-4 offset-md-1 py-4">
+                        <h4 class="text-white">Contact</h4>
+
+                        <ul class="list-unstyled">
+
+                            <li>
+                                <a href="https://www.linkedin.com/in/david-obembe/"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAeFBMVEUAAAD///+Hh4fs7Ozm5uadnZ2Ojo6MjIzh4eGkpKSDg4PMzMy+vr77+/vy8vKXl5fExMQiIiJqamo4ODiysrKhoaGrq6tmZmbR0dEvLy9TU1NhYWFOTk5bW1vc3NzV1dU/Pz95eXkdHR0SEhJGRkZycnIWFhY5OTlu9wQfAAADvklEQVR4nO2d61riMBBAyQJaKDcRKnjhosv6/m+4H14Qpe0EMmMI3zm/CZ1jQ5pMJrXRAAAAAAAAAAAAAAAAAAAAAIBY3GyKPGs1W1lebG5iB2PAMHP7LK5jB6RM4Q4Zxg5KkXG/RNC5wd/YgWnRKfXbso4dmg69SkHnurGD06DsJ/jFXezwwhnXCjr3HDvAYMoHmS/y2AGGUt9HtzzGDjEQUTD1m9iVDd2/2EEGMfMwTPuJIY0zW3qxgwzh1kPQtWJHGcKdj6GLHWUI64s39BlKnZvHDjOAjZfhS+wwA7i/+F469xEcxI4yiIGHYdrTtpGH4VXsIIOQVodbEs8sytO2tDtpo3ElGiafcGsKgknPu994rBdM+1HxTn0/Tb6PbqlOCDv3EDs4HYZVfv3Us1A7nsqnNrOUp9w/aR8+F7On2EEpc7X41j97l+b3xrjdy5fL2ajo3sYOBQAAAADAjNfucDLKl1m2nOWjTncVOx5d7jvZwfrMtSabX7jytC1w2OZOaDP9mSW/Lap3D3JryevKS39y2KYusfNG89vHH/P6T/cL02qPPycYVuZ1Ptnf+Z/7bI1MEjaUc+rv2JUk2xo+L6SP7sis9tJNDR99ynV2GJXrnmIo9rwPQ78qgS86qRn6FXrsY7ILZGe4PlrQuVFKhg8nCJrcRStDr4q5EqbJGEobr5WMEzGsO+Fw9PXO0DDzq3ksZ5mEoU8hUiXKiw0TwzD6F2+oPJ6eYiivKQO5fEPVCepZGqr+Es/SUPWIx3kaLi7eULN4/kwNS3KYv2l47PMw6xXtdtFbHDHTyeIaHnUPR3uLhVXHO3GjV5hsfA8nP5O9YhbrA720lKlhc3XYeO63ctTLEVv20ooK8ZZPW70Dc4aGlTkXr7uYgGF1jb/XSZ37mIZev8PmYbsdPsON2sTNzLB2VuLxZFQbaqwM6yclHv1c7SCLkaG0/pG/QW0wNTKUToPJ26ZqBz2MDKXLrsVvUFsF2xiKOyw38h9JawFlYygP9fJT//WsDVfideUfotZ5JBtD+bpt8Tu0jkOYGHqMg/IGsdYmlIlh3YztA/mcvNYK0bJSoQ55B/VP4oYvF28oz9swxBBDDDHEEMO4hkfVeWOIIYYYYoghhhhiGMlQzOZiiCGGGAYbTjHEEMPohuIbBzDEEEMMgw3F/y+EIYYYYhhsOMEQQwwxxDDYUHxxCYYYYmhuKJ4kwBDD6IbC+0gxxFDZcD1oChy26UltfF5IJl12YPSyTwAAAAAAAAAAAAAAAAAAAAAo5z8MCUafRQHkyQAAAABJRU5ErkJggg=="
+                                        alt="linkedin" width="30" height="30"></a>
+                                <a href="https://www.linkedin.com/in/david-obembe/" class="text-white">Linkedin</a></li>
+                            <br>
+                            <li>
+                                <a href="https://github.com/DavidObembe/Portfolio.git"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRVlabTBvgZaR1bxtDlFVmHqj6cAjsHbgEaxw&usqp=CAU" alt="Github" width="30" height="30"> </a>
+                                <a href="https://github.com/DavidObembe/Portfolio.git" class="text-white">Github</a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navbar navbar-dark bg-dark box-shadow">
+            <div class="container d-flex justify-content-between">
+                <!-- <a href="./home.html">
+                    <h4 class="text-white">Home</h4>
+                </a> -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </div>
+        </div>
+    </header>
+
+    <main role="main">
+
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1 class="jumbotron-heading">Data Analyst & Engineer </h1>
+
+
+            </div>
+        </section>
+
+        <!-- this is where my website links and picture are located -->
+
+
+        <div class="col-md-5" style="margin: auto;">
+            <h3 style="text-align: center;">Personal Details </h1>
+                <p class="hometext">
+                    I love crunching data and coming up with Unique and insightful dashboards .
+                </p>
+                <p class="hometext">I always thought I would become a great mechanical engineer because of my deep understanding of the sciences and mathematics, hence why I initially pursued a degree in Mechanical engineering in University.</p>
+                <p class="hometext">For the most part, it was an enjoyable experience but once I reached the final year and had to conduct my dissertation on the loading history in turbine blades, I had to adapt and develop new sets of skills that involved gathering large
+                    data from computer simulations. This was my doorway into data analytics— where my love for the subject began.</p>
+                <p class="hometext">Since then I've relocated from the UK to the USA, explored data analytics more by attending the intensive SMU 6-month Course on Data Science, and put these skills to practice in-class projects. </p>
+
+        </div>
+
+        <hr>
+        <div class="col-md-5" style="margin: auto;">
+            <h3 style="text-align: center;">Skills Expertise </h1>
+
+        </div>
+
+        <div class="container marketing">
+            <div class="row">
+                <div class="col-lg-4">
+                    <img class="rounded-circle" src="assets/pin.svg" alt="Generic placeholder image" width="140" height="140">
+                    <h4>Geomapping</h4>
+                    <p class="skilltext"> I create interactive and informative maps from geographical geojson data using Leaflet.js and mapbox. </p>
+
+
+                </div>
+                <!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <img class="rounded-circle" src="assets/decrease.svg" alt="Generic placeholder image" width="140" height="140">
+                    <h4>Machine Learning</h4>
+                    <p class="skilltext">I apply machine learning knowledge as well as the scikit-learn library for predictive analysis.</p>
+                </div>
+                <!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <img class="rounded-circle" src="assets/line-chart.svg" alt="Generic placeholder image" width="140" height="140">
+                    <h5>Tableau Dashboards</h5>
+                    <p class="skilltext">I use Tableau to develop quick yet attractive visualisations that communicate analytical information in simple and digestable forms. </p>
+                </div>
+                <br>
+
+                <!-- /.col-lg-4 -->
+                <div class="row">
+                    <div class="col-lg-4">
+                        <img class="rounded-circle" src="assets/analysis.svg" alt="Generic placeholder image" width="140" height="140">
+                        <h5>Exploratory Data Analysis (EDA)</h5>
+                        <p class="skilltext">I use Python libraries like Pandas, Numpy, Beautifulsoup and matplotlib to analyze trends in data obtained via APIs and Web scraping.</p>
+                    </div>
+                    <!-- /.col-lg-4 -->
+                    <div class="col-lg-4">
+                        <img class="rounded-circle" src="assets/monitor.svg" alt="Generic placeholder image" width="140" height="140">
+                        <h5>HTML & CSS Web Design</h5>
+                        <p class="skilltext">I build custom interactive data visualizations using D3.js and Javascript libraries and display them on websites.</p>
+                    </div>
+                    <!-- /.col-lg-4 -->
+                    <div class="col-lg-4">
+                        <img class="rounded-circle" src="assets/sql2.png" alt="Generic placeholder image" width="140" height="140">
+                        <h5>SQL Database & Cloud Computing</h5>
+                        <p class="skilltext">I use advanced SQL and Mongo techqinues to combine and store data in comprehensive databases.I design databases(ERD).</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- FOOTER -->
+            <footer class="container">
+                <p class="float-right"><a href="#">Back to top</a></p>
+                <p>© 2017-2018 Company, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+            </footer>
+        </div>
+
+
+    </main>
+
+    <footer class="text-muted">
+        <div class="container">
+            <p class="float-right">
+                <a href="#">Back to top</a>
+            </p>
+            <p>Album example is © Bootstrap, but please download and customize it for yourself!</p>
+            <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

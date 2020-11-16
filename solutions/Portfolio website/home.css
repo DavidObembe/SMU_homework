@@ -7,9 +7,9 @@
     padding-bottom: var(--jumbotron-padding-y);
     margin-bottom: 0;
     background-color: #fff;
-    background-image: url('./assets/chicken_backgriund.jpg');
+    background-image: url('./assets/photo-1580636319433-cefda9eecd6a.jpg');
     background-repeat: no-repeat;
-    background-position: top center;
+    background-position: center;
     background-size: cover;
 }
 
@@ -25,7 +25,7 @@
 }
 
 .jumbotron-heading {
-    font-weight: 500;
+    font-weight: 300;
 }
 
 .jumbotron .container {
